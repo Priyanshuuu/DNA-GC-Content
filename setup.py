@@ -5,14 +5,15 @@ from flask_bootstrap import Bootstrap
 import io
 import random
 from flask import Flask, Response, request
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-from matplotlib.figure import Figure
-
 from flask_uploads import UploadSet,configure_uploads,IMAGES,DATA,ALL
 from flask_sqlalchemy import SQLAlchemy 
 import pandas as pd
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 import io
@@ -21,8 +22,6 @@ from werkzeug import secure_filename
 
 import datetime
 import time
-
-import matplotlib.pyplot as plt
 
 # ML Packages
 from sklearn.cluster import KMeans
