@@ -95,7 +95,7 @@ def login():
 	form = LoginForm()
 	credential_id = ['abhitiwari299@gmail.com', 'pandeyprince25@gmail.com', 'gaurpratima02@gmail.com'] 
 	if form.validate_on_submit():
-	    if form.email.data in credential_id and form.password.data == 'gizmowits':
+	    if (form.email.data in credential_id) and (form.password.data == 'gizmowits'):
 	        flash('You have been logged in!', 'success')
 	        return redirect(url_for('index'))
 	    else:
