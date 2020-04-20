@@ -35,7 +35,7 @@ from flask import render_template, url_for, flash, redirect, request
 
 import os
 from whoosh.analysis import StemmingAnalyzer
-import flask_whooshalchemy
+
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
@@ -252,11 +252,3 @@ if __name__ == '__main__':
 	import webbrowser
 	# webbrowser.open("http://127.0.0.1:5000/")
 	app.run(debug=True)
-	
-
-	
-
-
-
-
-
