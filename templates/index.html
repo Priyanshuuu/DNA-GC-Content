@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+{% block content %}
+<!-- Main Content Is Here -->
+ <!-- Styles for  Loading and Spinning -->
+<style type="text/css">
+    body{
+  font:15px/1.5 Arial, Helvetica,sans-serif;
+}
+    .spinner-1:before{
+      content: "";
+      box-sizing: border-box;
+      position: absolute;
+      top:50%;
+      left: 50%;
+      height: 120px;
+      width: 120px;
+      margin-top: -5px;
+      margin-left: -70px;
+      border-radius: 50%;
+      border:12px solid transparent;
+      border-top-color: #7e00a0;
+      animation: spinner 1.0s linear infinite;
+    }
+    @keyframes spinner {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    li { background-color:#BDBDBD; }
+    li:nth-child(odd) { background-color:#0091EA; }
+    </style>
+
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<center>
+  <div class="container">
+  <div class="row">
+        <div class="col-md-9" style="background-color:#5f788a">
+          <br>
+        <div class="content-section" style="background:#202a3f ">
+        <center> <h3 style="color:white" class="display-4">DNA-GC content analysis</h3>
+          <p style="color:white">Using Machine Learning to classify the report</p>
+          <p><a href="{{ url_for('index')}}" type="button" class="btn btn-primary" > Refresh</a></p>
+        </center>
+        </div>
+      </div>
+
+        <div class="col-md-9" style="background-color:#5f788a">
+          <div class="content-section" style="background:#202a3f ">
+          <h3 style="color:#fff" class="display-4">Upload Your Dataset</h3>
+            <p style="color:#fff">We only accept csv format data</p>
+              <form method=POST enctype=multipart/form-data action="{{ url_for('dataupload') }}" class="form-group">
+                <div class="form-group">
+                  <input type="file" name="csv_data">
+                <br/>
+                </div>
+                  
+                <input type="submit"  onclick="myAnalyser()" class="btn btn-primary mb-2">
+                <input type="reset"  value="Reset" class="btn btn-danger mb-2">
+              </form>
+        </div>
+      </div> 
+      </div> </div></center>
+
+   
+
+{% endblock %}
+
+<!-- Main External 3-Party JS Is Here -->
+
+{% block scripts %}
+
+{{ super() }} 
+ <!-- Function to Show Spinning  -->
+<script>
+function myAnalyser() {
+  document.querySelector('.main div').style.display = 'none';
+  //Hide the main division
+  document.querySelector('.main').classList.add('spinner-1');
+  // Server request
+  setTimeout(() => {
+  document.querySelector('.main').classList.remove('spinner-1');
+  //Remove the animation
+  document.querySelector('.main div').style.display = 'block';
+  //Show the main division
+  },5000);//Number of seconds to last
+}
+</script>
+
+
+{% endblock %}
+
+
+

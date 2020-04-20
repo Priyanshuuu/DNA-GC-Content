@@ -1,0 +1,80 @@
+
+{% extends "layout.html" %}
+{% block content %}
+<!-- Main Content Is Here -->
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<center>
+  <div class="container">
+  <div class="row">
+    <div class="col-md-12" style="background-color:#5f788a">
+          <br>
+        <div class="content-section" style="background:#202a3f ">
+        <center> <h3 style="color:white" class="display-4">DNA-GC content analysis</h3>
+          <p style="color:white">Using Machine Learning to classify the report</p>
+          <p><a href="{{ url_for('index')}}" type="button" class="btn btn-primary" > Refresh</a></p>
+        </center>
+        </div>
+      </div>
+
+ 
+
+    <div class="col-md-12" style="background-color:#5f788a">
+        <div class="content-section" style="background:#202a3f ">
+                <h2 style="color:white">1.Principal component analysis</h2>
+                <center><p><span style="color:white">It is the dimension reduction technique and used on the seq data and check top 20 components variance.</span></p>
+               <img src="{{ PCA }}" alt="User Image"  height="300" width="350"></center>
+            </div>
+    </div>
+
+    <div class="col-md-12" style="background-color:#5f788a">
+        <div class="content-section" style="background:#202a3f ">
+                <h2 style="color:white">2.Graph with similar variance components</h2>
+                 <center><p><span style="color:white">It is the graph with similar variance componenets showed up in the PCA graph.</span></p>
+
+                <img src="{{ SVC }}" alt="User Image" height="300" width="350"></center> 
+            </div>
+    </div>
+
+    <div class="col-md-12" style="background-color:#5f788a">
+        <div class="content-section" style="background:#202a3f ">
+                 <h2 style="color:white" >3.Graph with different variance components</h2>
+                <center><p><span style="color:white">It is the graph with different variance componenets showed up in the PCA graph.</span></p>
+
+
+                <img src="{{ DVC }}" alt="User Image" height="300" width="350"></center>
+
+            </div>
+    </div>
+
+    <div class="col-md-12" style="background-color:#5f788a">
+        <div class="content-section" style="background:#202a3f ">
+                <h2 style="color:white">4.Inertia visualization</h2>
+                <center><p><span style="color:white">This graph shows that after 4-5 clusters at (the elbow) the change in the value of inertia is no longer significant and most likely, neither is the variance of the rest f the data after the elbow point 4/5 black points). Therefore we can discard evrything after k=4/5 and proceed to the last step inthe
+                process</span></p>
+                <img src="{{ IVML }}" alt="User Image"  height="300" width="350"></center>
+
+            </div>
+    </div>
+
+    <div class="col-md-12" style="background-color:#5f788a">
+        <div class="content-section" style="background:#202a3f ">
+                 <h2 style="color:white">5.Cluster Graph 2d-plot</h2>
+                 <center><p><span style="color:white">This is the cluster graph in 2d plot with having 4 cluster as beacause of elbow point</span></p>
+
+                <img src="{{ TWOD }}" alt="User Image" height="300" width="350"></center>
+
+            </div>
+    </div></div> </div></center>
+       
+
+{% endblock %}
+
+<!-- Main External 3-Party JS Is Here -->
+
+{% block scripts %}
+
+{{ super() }} 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+{% endblock %}
