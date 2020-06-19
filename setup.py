@@ -5,15 +5,14 @@ from flask_bootstrap import Bootstrap
 import io
 import random
 from flask import Flask, Response, request
+from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+from matplotlib.figure import Figure
+
 from flask_uploads import UploadSet,configure_uploads,IMAGES,DATA,ALL
 from flask_sqlalchemy import SQLAlchemy 
 import pandas as pd
 import numpy as np
-import matplotlib
-matplotlib.use('Agg')
 import matplotlib.pyplot as plt
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
-from matplotlib.figure import Figure
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 import io
@@ -35,7 +34,7 @@ from flask import render_template, url_for, flash, redirect, request
 
 import os
 from whoosh.analysis import StemmingAnalyzer
-
+import flask_whooshalchemy
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, SubmitField, BooleanField
 from wtforms.validators import DataRequired, Length, Email, EqualTo
@@ -93,9 +92,9 @@ def login():
 		remember = BooleanField('Remember Me')
 		submit = SubmitField('Login')
 	form = LoginForm()
-	credential_id = ['abhitiwari299@gmail.com', 'pandeyprince25@gmail.com', 'gaurpratima02@gmail.com'] 
+	
 	if form.validate_on_submit():
-	    if (form.email.data in credential_id) and (form.password.data == 'gizmowits'):
+	    if form.email.data == 'admin@blog.com' and form.password.data == 'password':
 	        flash('You have been logged in!', 'success')
 	        return redirect(url_for('index'))
 	    else:
@@ -253,3 +252,11 @@ if __name__ == '__main__':
 	import webbrowser
 	# webbrowser.open("http://127.0.0.1:5000/")
 	app.run(debug=True)
+	
+
+	
+
+
+
+
+
